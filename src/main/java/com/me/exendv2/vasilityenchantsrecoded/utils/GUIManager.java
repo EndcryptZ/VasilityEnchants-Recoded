@@ -18,7 +18,7 @@ public class GUIManager {
     public static Inventory MainGUI;
 
     public Inventory GUI() {
-        MainGUI = Bukkit.createInventory(null, 54, config.getString("GUIName"));
+        MainGUI = Bukkit.createInventory(null, 54, ConfigManager.ColorChanger(config.getString("GUIName")));
 
         return MainGUI;
     }
@@ -62,7 +62,7 @@ public class GUIManager {
     }
 
     public void helmetGUI(ItemStack item) {
-        MainGUI.setItem(19, bookitem(configManager.getBookName(Enchantment.WATER_WORKER)));
+        MainGUI.setItem(19, bookitem(configManager.getBookName(Enchantment.WATER_WORKER), item, Enchantment.WATER_WORKER));
 
     }
 
@@ -81,13 +81,13 @@ public class GUIManager {
         return item;
     }
 
-    private ItemStack bookitem(String name) {
+    private ItemStack bookitem(String name, ItemStack itemStack, Enchantment enchantment) {
         ItemStack item = new ItemStack(Material.ENCHANTED_BOOK, 1);
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName(name);
 
-        meta.setLore(configManager.getBookLore);
+        meta.setLore(configManager.getBookLore(itemStack, enchantment));
 
         item.setItemMeta(meta);
 

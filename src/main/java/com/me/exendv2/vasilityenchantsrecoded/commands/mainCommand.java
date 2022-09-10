@@ -39,7 +39,11 @@ public class mainCommand implements CommandExecutor {
                 }
             }
             sender.sendMessage(configManager.getPrefix + "§aConfiguration file has been reloaded!");
-            instance.configReload();
+            Bukkit.getPluginManager().getPlugin(instance.getName()).saveDefaultConfig();
+            Bukkit.getPluginManager().getPlugin(instance.getName()).reloadConfig();
+            Bukkit.getPluginManager().getPlugin(instance.getName()).saveConfig();
+            Bukkit.getPluginManager().disablePlugin(instance);
+            Bukkit.getPluginManager().enablePlugin(instance);
             return true;
         }
 

@@ -2,6 +2,7 @@ package com.me.exendv2.vasilityenchantsrecoded.listeners.items;
 
 import com.me.exendv2.vasilityenchantsrecoded.VasilityEnchants;
 import com.me.exendv2.vasilityenchantsrecoded.events.OnPlaceEvent;
+import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.ItemManager;
 import net.milkbowl.vault.economy.Economy;
@@ -17,6 +18,7 @@ public class helmetListener implements Listener {
     GUIManager guiManager = new GUIManager();
     Economy eco = VasilityEnchants.econ;
     ItemManager itemManager = new ItemManager();
+    ConfigManager configManager = new ConfigManager();
 
     @EventHandler
     public void onPlaceEvent(OnPlaceEvent e){
@@ -42,7 +44,12 @@ public class helmetListener implements Listener {
         if(e.getSlot() == 19) {
             Enchantment enchantment = Enchantment.WATER_WORKER;
             int level = item.getEnchantmentLevel(enchantment);
-
+            if(item.getEnchantmentLevel(enchantment) >= configManager.getMaxLevel(item, enchantment)) {
+                p.sendMessage("MAX LEVEL!!!!!");
+                return;
+            }
+            item.addUnsafeEnchantment(enchantment, level + 1);
+            guiManager.helmetGUI(item);
         }
     }
 }

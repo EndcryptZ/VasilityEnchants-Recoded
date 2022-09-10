@@ -19,7 +19,7 @@ public final class VasilityEnchants extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        reloadConfig();
+        saveDefaultConfig();
         setupEconomy();
         getServer().getPluginCommand("vasilityenchants").setExecutor(new mainCommand());
         getServer().getPluginManager().registerEvents(new mainClickListener(), this);
@@ -57,12 +57,6 @@ public final class VasilityEnchants extends JavaPlugin {
             return;
         }
         econ = rsp.getProvider();
-    }
-
-    public void configReload(){
-        getServer().getPluginManager().disablePlugin(this);
-        reloadConfig();
-        getServer().getPluginManager().enablePlugin(this);
     }
 
 }
