@@ -8,6 +8,8 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
+
 public final class VasilityEnchants extends JavaPlugin {
 
     public static Economy econ = null;

@@ -10,11 +10,11 @@ import org.bukkit.entity.Player;
 
 public class mainCommand implements CommandExecutor {
 
-    ConfigManager configManager = new ConfigManager();
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         GUIManager guiManager = new GUIManager();
+        ConfigManager configManager = new ConfigManager();
 
         if (args.length == 0){
             if (sender instanceof Player){

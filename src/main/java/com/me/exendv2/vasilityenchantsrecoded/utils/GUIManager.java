@@ -60,8 +60,7 @@ public class GUIManager {
     }
 
     public void helmetGUI(ItemStack item){
-
-        MainGUI.setItem(19, createGuiItem(Material.ENCHANTED_BOOK, "AQUA_AFFINITY", "Enchantment Level: " + item.getEnchantmentLevel(Enchantment.WATER_WORKER)));
+        MainGUI.setItem(19, bookitem(configManager.getEnchantName(Enchantment.WATER_WORKER)));
 
     }
 
@@ -74,6 +73,19 @@ public class GUIManager {
 
         // Set the lore of the item
         meta.setLore(Arrays.asList(lore));
+
+        item.setItemMeta(meta);
+
+        return item;
+    }
+
+    private ItemStack bookitem(String name){
+        ItemStack item = new ItemStack(Material.ENCHANTED_BOOK, 1);
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName(name);
+
+        meta.setLore(configManager.configLore());
 
         item.setItemMeta(meta);
 
