@@ -11,6 +11,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
+import java.util.List;
+
+import static com.me.exendv2.vasilityenchantsrecoded.utils.ColorManager.ColorChanger;
 
 public class GUIManager {
     FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
@@ -60,9 +63,9 @@ public class GUIManager {
 
     }
 
-    public void helmetGUI(ItemStack item){
+    public void helmetGUI(ItemStack item) {
         String path = "BookItem.Name";
-        MainGUI.setItem(19, bookitem(config.getString(path).replaceAll("(?i)%enchantment%", Enchantment.WATER_WORKER.getKey().getKey().replaceAll("_", " "))));
+        MainGUI.setItem(19, bookitem(ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", Enchantment.WATER_WORKER.getKey().getKey()))));
 
     }
 
@@ -81,16 +84,24 @@ public class GUIManager {
         return item;
     }
 
-    private ItemStack bookitem(String name){
+    private ItemStack bookitem(String name) {
         ItemStack item = new ItemStack(Material.ENCHANTED_BOOK, 1);
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName(name);
 
-        meta.setLore(config.getStringList("BookItem.Lore"));
+        meta.setLore(getBookLore);
 
         item.setItemMeta(meta);
 
         return item;
     }
+
+    private String getBookName(Enchantment enchantment) {
+        String path = "BookItem.Name";
+        return ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ")));
+    }
+
+    private List<String> getBookLore = config.getStringList("BookItem.Lore");
+
 }

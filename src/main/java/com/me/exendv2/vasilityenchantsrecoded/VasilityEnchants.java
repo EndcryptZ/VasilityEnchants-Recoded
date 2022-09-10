@@ -4,7 +4,7 @@ import com.me.exendv2.vasilityenchantsrecoded.commands.mainCommand;
 import com.me.exendv2.vasilityenchantsrecoded.listeners.closeInventoryListener;
 import com.me.exendv2.vasilityenchantsrecoded.listeners.items.helmetListener;
 import com.me.exendv2.vasilityenchantsrecoded.listeners.mainClickListener;
-import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
+import com.me.exendv2.vasilityenchantsrecoded.utils.ColorManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -33,7 +33,7 @@ public final class VasilityEnchants extends JavaPlugin {
         for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getOpenInventory().getTopInventory() == GUIManager.MainGUI){
                 p.closeInventory();
-                p.sendMessage(ConfigManager.ColorChanger(getConfig().getString("PREFIX") + "GUI has been closed due to plugin "));
+                p.sendMessage(ColorManager.ColorChanger(getConfig().getString("PREFIX") + "GUI has been closed due to plugin "));
             }
         }
     }
