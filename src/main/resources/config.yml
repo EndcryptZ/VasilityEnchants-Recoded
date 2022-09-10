@@ -1,0 +1,66 @@
+PREFIX: '&x&0&8&4&c&f&b[&x&1&2&5&6&f&bV&x&1&b&6&0&f&ba&x&2&5&6&9&f&bs&x&2&f&7&3&f&bi&x&3&9&7&d&f&cl&x&4&2&8&7&f&ci&x&4&c&9&1&f&ct&x&5&6&9&b&f&cy&x&5&f&a&4&f&cE&x&6&9&a&e&f&cn&x&7&3&b&8&f&cc&x&7&c&c&2&f&ch&x&8&6&c&c&f&da&x&9&0&d&6&f&dn&x&9&a&d&f&f&dt&x&a&3&e&9&f&ds&x&a&d&f&3&f&d] &r'
+GUIName: '&aVasilityEnchants'
+BookItem:
+  Name: '%enchantment%'
+  Lore:
+    - '&f'
+    - '&aPrice: %price%'
+    - '&aNext Level: %level%'
+    - '&f'
+    - '&aClick to enchant!'
+
+HELMET:
+  AQUA_AFFINITY:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  BLAST_PROTECTION:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  FIRE_PROTECTION:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  PROJECTILE_PROTECTION:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  PROTECTION:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  RESPIRATION:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  THORNS:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  UNBREAKING:
+    1: 1
+    2: 2
+    3: 3
+    4: 4
+    5: 5
+  MENDING:
+    1: 1
+  BINDING_CURSE:
+    1: 1
+  VANISHING_CURSE:
+    1: 1

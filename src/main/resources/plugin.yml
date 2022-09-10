@@ -1,0 +1,19 @@
+name: VasilityEnchants-Recoded
+version: '${project.version}'
+main: com.me.exendv2.vasilityenchantsrecoded.VasilityEnchants
+api-version: 1.19
+authors: [ ExEndV2 ]
+description: Recoded from scratch because the previous one so dirty
+softdepend:
+  - Vault
+commands:
+  vasilityenchants:
+    aliases: [ ve, enchants ]
+    usage: /<command>
+    description: Main Command
+
+permissions:
+  vasilityenchants.reload:
+    description: Grants access to reload command
+  vasilityenchants.others:
+    description: Grants access to open enchant gui for other players
