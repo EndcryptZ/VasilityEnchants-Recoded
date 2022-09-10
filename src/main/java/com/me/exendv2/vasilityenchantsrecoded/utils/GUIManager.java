@@ -11,12 +11,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
-import java.util.List;
-
-import static com.me.exendv2.vasilityenchantsrecoded.utils.ColorManager.ColorChanger;
 
 public class GUIManager {
     FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
+    ConfigManager configManager = new ConfigManager();
     public static Inventory MainGUI;
 
     public Inventory GUI() {
@@ -65,7 +63,7 @@ public class GUIManager {
 
     public void helmetGUI(ItemStack item) {
         String path = "BookItem.Name";
-        MainGUI.setItem(19, bookitem(ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", Enchantment.WATER_WORKER.getKey().getKey()))));
+        MainGUI.setItem(19, bookitem(configManager.getBookName(Enchantment.WATER_WORKER)));
 
     }
 
@@ -90,18 +88,11 @@ public class GUIManager {
 
         meta.setDisplayName(name);
 
-        meta.setLore(getBookLore);
+        meta.setLore(configManager.getBookLore);
 
         item.setItemMeta(meta);
 
         return item;
     }
-
-    private String getBookName(Enchantment enchantment) {
-        String path = "BookItem.Name";
-        return ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ")));
-    }
-
-    private List<String> getBookLore = config.getStringList("BookItem.Lore");
 
 }
