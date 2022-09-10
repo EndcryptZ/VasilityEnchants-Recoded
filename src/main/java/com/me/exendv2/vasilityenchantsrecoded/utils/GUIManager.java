@@ -1,7 +1,9 @@
 package com.me.exendv2.vasilityenchantsrecoded.utils;
 
+import com.me.exendv2.vasilityenchantsrecoded.VasilityEnchants;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.inventory.Inventory;
@@ -11,12 +13,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 
 public class GUIManager {
-
-    ConfigManager configManager = new ConfigManager();
+    FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
     public static Inventory MainGUI;
 
     public Inventory GUI() {
-        MainGUI = Bukkit.createInventory(null, 54, configManager.getGUIName);
+        MainGUI = Bukkit.createInventory(null, 54, config.getString("GUIName"));
 
         return MainGUI;
     }
@@ -60,7 +61,8 @@ public class GUIManager {
     }
 
     public void helmetGUI(ItemStack item){
-        MainGUI.setItem(19, bookitem(configManager.getEnchantName(Enchantment.WATER_WORKER)));
+        String path = "BookItem.Name";
+        MainGUI.setItem(19, bookitem(config.getString(path).replaceAll("(?i)%enchantment%", Enchantment.WATER_WORKER.getKey().getKey().replaceAll("_", " "))));
 
     }
 
@@ -85,7 +87,7 @@ public class GUIManager {
 
         meta.setDisplayName(name);
 
-        meta.setLore(configManager.configLore());
+        meta.setLore(config.getStringList("BookItem.Lore"));
 
         item.setItemMeta(meta);
 

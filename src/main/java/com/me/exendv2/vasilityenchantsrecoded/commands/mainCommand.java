@@ -1,11 +1,13 @@
 package com.me.exendv2.vasilityenchantsrecoded.commands;
 
+import com.me.exendv2.vasilityenchantsrecoded.VasilityEnchants;
 import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 public class mainCommand implements CommandExecutor {
@@ -13,8 +15,8 @@ public class mainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
+        VasilityEnchants instance = VasilityEnchants.getPlugin(VasilityEnchants.class);
         GUIManager guiManager = new GUIManager();
-        ConfigManager configManager = new ConfigManager();
 
         if (args.length == 0){
             if (sender instanceof Player){
@@ -36,8 +38,8 @@ public class mainCommand implements CommandExecutor {
                     return true;
                 }
             }
-            sender.sendMessage(configManager.getPluginPrefix + "§aConfiguration file has been reloaded!");
-            configManager.configReload();
+            sender.sendMessage(ConfigManager.ColorChanger(instance.getConfig().getString("PREFIX") + "§aConfiguration file has been reloaded!"));
+            instance.configReload();
             return true;
         }
 
