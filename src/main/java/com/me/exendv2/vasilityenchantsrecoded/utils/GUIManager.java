@@ -62,7 +62,6 @@ public class GUIManager {
     }
 
     public void helmetGUI(ItemStack item) {
-        String path = "BookItem.Name";
         MainGUI.setItem(19, bookitem(configManager.getBookName(Enchantment.WATER_WORKER)));
 
     }

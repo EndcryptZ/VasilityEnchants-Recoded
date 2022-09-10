@@ -16,7 +16,7 @@ public class ConfigManager {
 
     public String getBookName(Enchantment enchantment) {
         String path = "BookItem.Name";
-        return ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ")));
+        return ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ").toUpperCase()));
     }
 
     public static String ColorChanger(String message){

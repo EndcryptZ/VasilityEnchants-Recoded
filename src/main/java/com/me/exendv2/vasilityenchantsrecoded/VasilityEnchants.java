@@ -8,6 +8,7 @@ import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,10 +31,18 @@ public final class VasilityEnchants extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        // Loop all players
         for (Player p : Bukkit.getOnlinePlayers()) {
+            // Checks if opened inventory of player is the Enchant GUI
             if (p.getOpenInventory().getTopInventory() == GUIManager.MainGUI){
+                // Checks if the item in Enchant GUI and Slot 13 isn't a barrier
+                if (!(p.getOpenInventory().getTopInventory().getItem(13).getType() == Material.BARRIER)) {
+                    // Gives the item in slot 13
+                    p.getInventory().addItem(p.getOpenInventory().getItem(13));
+                }
+                // Closes Enchant GUI
                 p.closeInventory();
-                p.sendMessage(ConfigManager.ColorChanger(getConfig().getString("PREFIX")) + "GUI has been closed due to plugin ");
+                p.sendMessage(ConfigManager.ColorChanger(getConfig().getString("PREFIX")) + "GUI has been closed due to plugin deactivation.");
             }
         }
     }
