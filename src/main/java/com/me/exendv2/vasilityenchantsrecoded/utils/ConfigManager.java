@@ -18,7 +18,7 @@ public class ConfigManager {
         int i;
         for (String s : itemManager.EnchantableList){
             if (itemStack.getType().name().contains(s)){
-                path = s + "." + enchantment.getKey().getKey().toUpperCase();
+                path = s + "." + enchantment.getKey().getKey().toUpperCase() + ".Prices";
                 break;
             }
         }
@@ -34,7 +34,7 @@ public class ConfigManager {
                     .stream()
                     .map(line -> ColorChanger(line)
                             .replaceAll("%level%", ColorChanger(config.getString("MaxLevelOutput")))
-                            .replaceAll("%price%", "0"))
+                            .replaceAll("%price%", ColorChanger(config.getString("MaxLevelOutput"))))
                     .collect(Collectors.toList());
         }
 
@@ -50,12 +50,12 @@ public class ConfigManager {
         return lores;
     }
 
-    public long getPrice(ItemStack itemStack, Enchantment enchantment){
+    public double getPrice(ItemStack itemStack, Enchantment enchantment){
         String path = null;
         for (String s : itemManager.EnchantableList) {
             if (itemStack.getType().name().contains(s)) {
                 int level = itemStack.getEnchantmentLevel(enchantment) + 1;
-                path = s + "." + enchantment.getKey().getKey().toUpperCase() + "." + level;
+                path = s + "." + enchantment.getKey().getKey().toUpperCase() + "." + "Prices." + level;
                 break;
             }
         } return config.getLong(path);
@@ -66,6 +66,16 @@ public class ConfigManager {
     public String getBookName(Enchantment enchantment) {
         String path = "BookItem.Name";
         return ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ").toUpperCase()));
+    }
+
+    public int getSlot(ItemStack itemStack, Enchantment enchantment){
+        String path = null;
+        for (String s : itemManager.EnchantableList) {
+            if (itemStack.getType().name().contains(s)) {
+                path = s + "." + enchantment.getKey().getKey().toUpperCase() + ".Slot";
+                break;
+            }
+        } return config.getInt(path);
     }
 
     public static String ColorChanger(String message){

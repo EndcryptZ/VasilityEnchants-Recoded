@@ -5,9 +5,8 @@ import org.bukkit.inventory.ItemStack;
 public class ItemManager {
 
     public String[] EnchantableList = {"HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS", "SWORD", "PICKAXE"
-            , "AXE", "SHOVEL", "HOE", "BOW", "FISHING_ROD", "TRIDENT", "CROSSBOW", "BOW"
-            , "SHEARS", "SHIELD", "ELYTRA", "FLINT_AND_STEEL", "CARROT_ON_A_STICK"
-            , "WARPED_FUNGUS_ON_A_STICK"};
+            , "AXE", "SHOVEL", "HOE", "BOW", "FISHING_ROD", "TRIDENT", "CROSSBOW", "SHEARS", "SHIELD"
+            , "ELYTRA", "FLINT_AND_STEEL", "CARROT_ON_A_STICK" , "WARPED_FUNGUS_ON_A_STICK"};
 
     public boolean isEnchantable(ItemStack itemStack) {
         boolean bool = false;
@@ -54,5 +53,35 @@ public class ItemManager {
 
     public boolean isHoe(ItemStack itemStack) {
         return itemStack.getType().name().contains("HOE");
+    }
+    public boolean isBow(ItemStack itemStack) {
+        return itemStack.getType().name().equals("BOW");
+    }
+    public boolean isTrident(ItemStack itemStack) {
+        return itemStack.getType().name().equals("TRIDENT");
+    }
+    public boolean isFishingRod(ItemStack itemStack) {
+        return itemStack.getType().name().equals("FISHING_ROD");
+    }
+    public boolean isCrossbow(ItemStack itemStack) {
+        return itemStack.getType().name().equals("CROSSBOW");
+    }
+    public boolean isShears(ItemStack itemStack) {
+        return itemStack.getType().name().equals("SHEARS");
+    }
+    public boolean isShield(ItemStack itemStack) {
+        return itemStack.getType().name().equals("SHIELD");
+    }
+    public boolean isElytra(ItemStack itemStack) {
+        return itemStack.getType().name().equals("ELYTRA");
+    }
+    public boolean isFlintAndSteel(ItemStack itemStack) {
+        return itemStack.getType().name().equals("FLINT_AND_STEEL");
+    }
+    public boolean isCarrotOnAStick(ItemStack itemStack) {
+        return itemStack.getType().name().equals("CARROT_ON_A_STICK");
+    }
+    public boolean isWarpedFungusOnAStick(ItemStack itemStack) {
+        return itemStack.getType().name().equals("WARPED_FUNGUS_ON_A_STICK");
     }
 }

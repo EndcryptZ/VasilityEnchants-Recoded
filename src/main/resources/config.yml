@@ -1,69 +1,505 @@
 PREFIX: '&x&0&8&4&c&f&b[&x&1&2&5&6&f&bV&x&1&b&6&0&f&ba&x&2&5&6&9&f&bs&x&2&f&7&3&f&bi&x&3&9&7&d&f&cl&x&4&2&8&7&f&ci&x&4&c&9&1&f&ct&x&5&6&9&b&f&cy&x&5&f&a&4&f&cE&x&6&9&a&e&f&cn&x&7&3&b&8&f&cc&x&7&c&c&2&f&ch&x&8&6&c&c&f&da&x&9&0&d&6&f&dn&x&9&a&d&f&f&dt&x&a&3&e&9&f&ds&x&a&d&f&3&f&d] &r'
 GUIName: '&aVasilityEnchants'
 
-MaxLevelOutput: '&c&lMAX' # %level% output if item reached the last level
+CurrencySymbol: '$' # Appears besides %price%, doesn't appear if level is maxed
+MaxLevelOutput: '&c&lMAX' # %level% and %price% output if item reached the last level
+
+# Placeholders:
+# %price% - Outputs price of next enchantment level
+# %level% - Outputs current level of the enchant in the specific item
+# %enchantment% - Outputs enchant's name
 
 BookItem:
-  Name: '%enchantment%'
+  Name: '&e&l%enchantment%'
   Lore:
     - '&f'
-    - '&aPrice: %price%'
-    - '&aNext Level: %level%'
+    - '&bPrice: &a%price%'
+    - '&bNext Level: &a%level%'
     - '&f'
-    - '&aClick to enchant!'
+    - '&bClick to enchant!'
 
 HELMET:
   AQUA_AFFINITY:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 19
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   BLAST_PROTECTION:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   FIRE_PROTECTION:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   PROJECTILE_PROTECTION:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 28
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   PROTECTION:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   RESPIRATION:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   THORNS:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 37
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   UNBREAKING:
-    1: 100
-    2: 200
-    3: 300
-    4: 400
-    5: 500
+    Slot: 39
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
   MENDING:
-    1: 10000
+    Slot: 24
+    Prices:
+      1: 10000
   BINDING_CURSE:
-    1: 10000
+    Slot: 33
+    Prices:
+      1: 10000
   VANISHING_CURSE:
-    1: 10000
+    Slot: 42
+    Prices:
+      1: 10000
+
+CHESTPLATE:
+  BLAST_PROTECTION:
+    Slot: 19
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FIRE_PROTECTION:
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  PROJECTILE_PROTECTION:
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  PROTECTION:
+    Slot: 28
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  THORNS:
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  UNBREAKING:
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  MENDING:
+    Slot: 24
+    Prices:
+      1: 10000
+  BINDING_CURSE:
+    Slot: 33
+    Prices:
+      1: 10000
+  VANISHING_CURSE:
+    Slot: 42
+    Prices:
+      1: 10000
+
+LEGGINGS:
+  BLAST_PROTECTION:
+    Slot: 19
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FIRE_PROTECTION:
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  PROJECTILE_PROTECTION:
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  PROTECTION:
+    Slot: 28
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SWIFT_SNEAK:
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  THORNS:
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  UNBREAKING:
+    Slot: 38
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  MENDING:
+    Slot: 24
+    Prices:
+      1: 10000
+  BINDING_CURSE:
+    Slot: 33
+    Prices:
+      1: 10000
+  VANISHING_CURSE:
+    Slot: 42
+    Prices:
+      1: 10000
+
+BOOTS:
+  BLAST_PROTECTION:
+    Slot: 19
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  DEPTH_STRIDER:
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FEATHER_FALLING:
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FIRE_PROTECTION:
+    Slot: 28
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FROST_WALKER:
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  PROJECTILE_PROTECTION:
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  PROTECTION:
+    Slot: 37
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SOUL_SPEED:
+    Slot: 38
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  THORNS:
+    Slot: 39
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  UNBREAKING:
+    Slot: 31
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  MENDING:
+    Slot: 24
+    Prices:
+      1: 10000
+  BINDING_CURSE:
+    Slot: 33
+    Prices:
+      1: 10000
+  VANISHING_CURSE:
+    Slot: 42
+    Prices:
+      1: 10000
+
+SWORD:
+  BANE_OF_ARTHROPODS:
+    Slot: 19
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FIRE_ASPECT:
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  KNOCKBACK:
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  LOOTING:
+    Slot: 28
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SHARPNESS:
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SMITE:
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SWEEPING_EDGE:
+    Slot: 36
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  UNBREAKING:
+    Slot: 38
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  MENDING:
+    Slot: 24
+    Prices:
+      1: 10000
+  VANISHING_CURSE:
+    Slot: 42
+    Prices:
+      1: 10000
+
+PICKAXE:
+  EFFICIENCY:
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FORTUNE:
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SILK_TOUCH:
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  UNBREAKING:
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  MENDING:
+    Slot: 24
+    Prices:
+      1: 10000
+  VANISHING_CURSE:
+    Slot: 42
+    Prices:
+      1: 10000
+
+AXE:
+  BANE_OF_ARTHROPODS:
+    Slot: 19
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  EFFICIENCY:
+    Slot: 20
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  FORTUNE:
+    Slot: 21
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SHARPNESS:
+    Slot: 28
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SILK_TOUCH:
+    Slot: 29
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  SMITE:
+    Slot: 30
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  UBREAKING:
+    Slot: 38
+    Prices:
+      1: 100
+      2: 200
+      3: 300
+      4: 400
+      5: 500
+  MENDING:
+    Slot: 24
+    Prices:
+      1: 10000
+  VANISHING_CURSE:
+    Slot: 42
+    Prices:
+      1: 10000

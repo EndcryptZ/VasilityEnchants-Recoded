@@ -2,7 +2,7 @@ package com.me.exendv2.vasilityenchantsrecoded;
 
 import com.me.exendv2.vasilityenchantsrecoded.commands.mainCommand;
 import com.me.exendv2.vasilityenchantsrecoded.listeners.closeInventoryListener;
-import com.me.exendv2.vasilityenchantsrecoded.listeners.items.helmetListener;
+import com.me.exendv2.vasilityenchantsrecoded.listeners.enchantListener;
 import com.me.exendv2.vasilityenchantsrecoded.listeners.mainClickListener;
 import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
@@ -24,7 +24,7 @@ public final class VasilityEnchants extends JavaPlugin {
         getServer().getPluginCommand("vasilityenchants").setExecutor(new mainCommand());
         getServer().getPluginManager().registerEvents(new mainClickListener(), this);
         getServer().getPluginManager().registerEvents(new closeInventoryListener(), this);
-        getServer().getPluginManager().registerEvents(new helmetListener(), this);
+        getServer().getPluginManager().registerEvents(new enchantListener(), this);
         // Plugin startup logic
 
     }

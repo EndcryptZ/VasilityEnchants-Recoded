@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class GUIManager {
     FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
     ConfigManager configManager = new ConfigManager();
+    ItemManager itemManager = new ItemManager();
     public static Inventory MainGUI;
 
     public Inventory GUI() {
@@ -61,9 +62,70 @@ public class GUIManager {
 
     }
 
-    public void helmetGUI(ItemStack item) {
-        MainGUI.setItem(19, bookitem(configManager.getBookName(Enchantment.WATER_WORKER), item, Enchantment.WATER_WORKER));
-
+    public void bookGUI(ItemStack item) {
+        String path = null;
+        if (itemManager.isHelmet(item)) {
+            path = "HELMET";
+        }
+        else if (itemManager.isChestplate(item)) {
+            path = "CHESTPLATE";
+        }
+        else if (itemManager.isLeggings(item)) {
+            path = "LEGGINGS";
+        }
+        else if (itemManager.isBoots(item)) {
+            path = "BOOTS";
+        }
+        else if (itemManager.isSword(item)) {
+            path = "SWORD";
+        }
+        else if (itemManager.isPickaxe(item)) {
+            path = "PICKAXE";
+        }
+        else if (itemManager.isAxe(item)) {
+            path = "AXE";
+        }
+        else if (itemManager.isShovel(item)) {
+            path = "SHOVEL";
+        }
+        else if (itemManager.isHoe(item)) {
+            path = "HOE";
+        }
+        else if (itemManager.isBow(item)) {
+            path = "BOW";
+        }
+        else if (itemManager.isTrident(item)) {
+            path = "TRIDENT";
+        }
+        else if (itemManager.isFishingRod(item)) {
+            path = "FISHING_ROD";
+        }
+        else if (itemManager.isCrossbow(item)) {
+            path = "CROSSBOW";
+        }
+        else if (itemManager.isShears(item)) {
+            path = "SHEARS";
+        }
+        else if (itemManager.isShield(item)) {
+            path = "SHIELD";
+        }
+        else if (itemManager.isElytra(item)) {
+            path = "ELYTRA";
+        }
+        else if (itemManager.isFlintAndSteel(item)) {
+            path = "FLINT_AND_STEEL";
+        }
+        else if (itemManager.isCarrotOnAStick(item)) {
+            path = "CARROT_ON_A_STICK";
+        }
+        else if (itemManager.isWarpedFungusOnAStick(item)) {
+            path = "WARPED_FUNGUS_ON_A_STICK";
+        }
+        for (Enchantment e : Enchantment.values()) {
+            if (config.getConfigurationSection(path).getKeys(false).contains(e.getKey().getKey().toUpperCase())) {
+                setBook(item, e);
+            }
+        }
     }
 
     private ItemStack createGuiItem(final Material material, final String name, final String... lore) {
@@ -92,6 +154,11 @@ public class GUIManager {
         item.setItemMeta(meta);
 
         return item;
+    }
+
+    private void setBook(ItemStack item, Enchantment enchantment){
+        int slot = configManager.getSlot(item, enchantment);
+        MainGUI.setItem(slot, bookitem(configManager.getBookName(enchantment), item, enchantment));
     }
 
 }
