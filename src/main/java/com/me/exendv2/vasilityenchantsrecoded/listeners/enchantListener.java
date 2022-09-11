@@ -4,7 +4,6 @@ import com.me.exendv2.vasilityenchantsrecoded.VasilityEnchants;
 import com.me.exendv2.vasilityenchantsrecoded.events.OnPlaceEvent;
 import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
-import com.me.exendv2.vasilityenchantsrecoded.utils.ItemManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,7 +23,6 @@ public class enchantListener implements Listener {
     Economy eco = VasilityEnchants.econ;
     ConfigManager configManager = new ConfigManager();
     FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
-    ItemManager itemManager = new ItemManager();
 
     @EventHandler
     public void onPlaceEvent(OnPlaceEvent e) {
@@ -57,18 +55,22 @@ public class enchantListener implements Listener {
                         if (e.getSlot() == configManager.getSlot(item, enchantment)) {
 
                             double price = configManager.getPrice(item, enchantment);
+                            String enchantname = enchantment.getKey().getKey().toUpperCase().replaceAll("_", " ");
                             if (item.getEnchantmentLevel(enchantment) >= configManager.getMaxLevel(item, enchantment)) {
 
                                 p.playSound(p.getLocation(), BLOCK_ANVIL_LAND, 10, 1);
+                                p.sendMessage(ConfigManager.ColorChanger("&cYour &e" + enchantname + " &cenchantment is already on max level!"));
                                 return;
                             }
                             if (price > balance) {
                                 p.playSound(p.getLocation(), BLOCK_ANVIL_LAND, 10, 1);
+                                p.sendMessage(ConfigManager.ColorChanger("&cYou don't have enough money to upgrade &e" + enchantname + " enchantment!"));
                                 return;
                             }
                             item.addUnsafeEnchantment(enchantment, item.getEnchantmentLevel(enchantment) + 1);
                             eco.withdrawPlayer(p, price);
                             p.playSound(p.getLocation(), ENTITY_PLAYER_LEVELUP, 10, 1);
+                            p.sendMessage(ConfigManager.ColorChanger("&aSuccessfully upgraded &e" + enchantname + " from level " + item.getEnchantmentLevel(enchantment) + " to level " + enchantname + "!"));
                             guiManager.bookGUI(item);
                             return;
                         }
