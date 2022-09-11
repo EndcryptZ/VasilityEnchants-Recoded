@@ -34,7 +34,8 @@ public class ConfigManager {
                     .stream()
                     .map(line -> ColorChanger(line)
                             .replaceAll("%level%", ColorChanger(config.getString("MaxLevelOutput")))
-                            .replaceAll("%price%", ColorChanger(config.getString("MaxLevelOutput"))))
+                            .replaceAll("%price%", ColorChanger(config.getString("MaxLevelOutput")))
+                            .replaceAll("%symbol%", ""))
                     .collect(Collectors.toList());
         }
 
@@ -43,7 +44,8 @@ public class ConfigManager {
                     .stream()
                     .map(line -> ColorChanger(line)
                             .replaceAll("%level%", String.valueOf(item.getEnchantmentLevel(enchantment)))
-                            .replaceAll("%price%", String.valueOf(getPrice(item, enchantment))))
+                            .replaceAll("%price%", String.valueOf(getPrice(item, enchantment)))
+                            .replaceAll("%symbol%", "\\" + config.getString("CurrencySymbol")))
                     .collect(Collectors.toList());
 
         }
