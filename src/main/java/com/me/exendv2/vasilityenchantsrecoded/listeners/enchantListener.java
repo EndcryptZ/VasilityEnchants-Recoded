@@ -59,18 +59,20 @@ public class enchantListener implements Listener {
                             if (item.getEnchantmentLevel(enchantment) >= configManager.getMaxLevel(item, enchantment)) {
 
                                 p.playSound(p.getLocation(), BLOCK_ANVIL_LAND, 10, 1);
-                                p.sendMessage(ConfigManager.ColorChanger("&cYour &e" + enchantname + " &cenchantment is already on max level!"));
+                                p.sendMessage(ConfigManager.ColorChanger(configManager.getPrefix + "&cYour &e" + enchantname + " &cenchantment is already on max level!"));
                                 return;
                             }
                             if (price > balance) {
                                 p.playSound(p.getLocation(), BLOCK_ANVIL_LAND, 10, 1);
-                                p.sendMessage(ConfigManager.ColorChanger("&cYou don't have enough money to upgrade &e" + enchantname + " enchantment!"));
+                                p.sendMessage(ConfigManager.ColorChanger(configManager.getPrefix + "&cYou don't have enough money to upgrade &e" + enchantname + " enchantment!"));
                                 return;
                             }
-                            item.addUnsafeEnchantment(enchantment, item.getEnchantmentLevel(enchantment) + 1);
+                            int level = item.getEnchantmentLevel(enchantment);
+                            int nextlevel = item.getEnchantmentLevel(enchantment) + 1;
+                            item.addUnsafeEnchantment(enchantment, nextlevel);
                             eco.withdrawPlayer(p, price);
                             p.playSound(p.getLocation(), ENTITY_PLAYER_LEVELUP, 10, 1);
-                            p.sendMessage(ConfigManager.ColorChanger("&aSuccessfully upgraded &e" + enchantname + " from level " + item.getEnchantmentLevel(enchantment) + " to level " + enchantname + "!"));
+                            p.sendMessage(ConfigManager.ColorChanger(configManager.getPrefix + "&aSuccessfully upgraded &e" + enchantname + " &afrom level &e" + level + "&a to level &e" + nextlevel + "!"));
                             guiManager.bookGUI(item);
                             return;
                         }
