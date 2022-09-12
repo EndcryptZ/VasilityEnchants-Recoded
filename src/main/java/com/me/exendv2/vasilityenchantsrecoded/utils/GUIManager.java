@@ -6,11 +6,14 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
+
+import static org.bukkit.Sound.BLOCK_BEACON_ACTIVATE;
 
 public class GUIManager {
     FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
@@ -28,6 +31,7 @@ public class GUIManager {
         p.openInventory(GUI());
 
         basegui();
+        ((Player) p).playSound(p.getLocation(), BLOCK_BEACON_ACTIVATE, 10, 1);
 
     }
 
