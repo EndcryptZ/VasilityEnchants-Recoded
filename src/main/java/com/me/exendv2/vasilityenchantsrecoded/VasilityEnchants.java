@@ -61,4 +61,10 @@ public final class VasilityEnchants extends JavaPlugin {
         econ = rsp.getProvider();
     }
 
+    public void configReload(){
+        saveDefaultConfig();
+        saveConfig();
+        reloadConfig();
+    }
+
 }
