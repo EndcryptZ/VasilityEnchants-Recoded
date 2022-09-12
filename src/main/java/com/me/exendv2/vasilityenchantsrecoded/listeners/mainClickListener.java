@@ -11,6 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class mainClickListener implements Listener {
 
     GUIManager guiManager = new GUIManager();
@@ -27,7 +29,8 @@ public class mainClickListener implements Listener {
         if (!(e.getSlot() == 13)){
             return;
         }
-        if (!(e.getClickedInventory().getItem(13).getType() == Material.BARRIER)) {
+        if (Objects.requireNonNull(e.getClickedInventory()).getItem(13) == null) {return;}
+        if (!(Objects.requireNonNull(e.getClickedInventory().getItem(13)).getType() == Material.BARRIER)) {
             guiManager.openGUI(e.getWhoClicked());
             e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
             return;
@@ -35,7 +38,7 @@ public class mainClickListener implements Listener {
         OnPlaceEvent onPlaceEvent = new OnPlaceEvent(e.getCursor(), (Player) e.getWhoClicked());
         if (itemManager.isEnchantable(e.getCursor())) {
             // Sets the item in slot 13 to player's cursor item and remove the item from the cursor
-            GUIManager.MainGUI.setItem(13, new ItemStack(e.getCursor()));
+            GUIManager.MainGUI.setItem(13, new ItemStack(Objects.requireNonNull(e.getCursor())));
             e.getWhoClicked().setItemOnCursor(null);
             Bukkit.getPluginManager().callEvent(onPlaceEvent);
         }

@@ -14,6 +14,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 import static org.bukkit.Sound.BLOCK_ANVIL_LAND;
 import static org.bukkit.Sound.ENTITY_PLAYER_LEVELUP;
 
@@ -34,23 +36,24 @@ public class enchantListener implements Listener {
     @EventHandler
     public void onClickEvent(InventoryClickEvent e) {
 
-        if (!(e.getClickedInventory() == GUIManager.MainGUI)) return;
+        if (!(e.getClickedInventory() == GUIManager.MainGUI)) {return;}
 
+        if (Objects.requireNonNull(e.getClickedInventory()).getItem(13) == null) {return;}
         ItemStack item = e.getClickedInventory().getItem(13);
         Player p = (Player) e.getWhoClicked();
         double balance = eco.getBalance(p);
-        if (item.getType() == Material.BARRIER) {
+        if (Objects.requireNonNull(item).getType() == Material.BARRIER) {
             return;
         }
 
         // ENCHANT LISTENER
-        for (String itemtype : config.getConfigurationSection("").getKeys(false)) {
+        for (String itemtype : Objects.requireNonNull(config.getConfigurationSection("")).getKeys(false)) {
 
             if (item.getType().name().contains(itemtype)) {
 
                 for (Enchantment enchantment : Enchantment.values()) {
 
-                    if (config.getConfigurationSection(itemtype).getKeys(false).contains(enchantment.getKey().getKey().toUpperCase())) {
+                    if (Objects.requireNonNull(config.getConfigurationSection(itemtype)).getKeys(false).contains(enchantment.getKey().getKey().toUpperCase())) {
 
                         if (e.getSlot() == configManager.getSlot(item, enchantment)) {
 

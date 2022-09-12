@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class closeInventoryListener implements Listener {
 
     @EventHandler
@@ -20,10 +22,12 @@ public class closeInventoryListener implements Listener {
         // Simple check if the GUI is from /enchants command
         if (!(inv == GUIManager.MainGUI)) return;
 
+        if (e.getInventory().getItem(13) == null) {return;}
+
         ItemStack item = e.getInventory().getItem(13);
 
         // Checks if item in slot 13 is BARRIER
-        if (item.getType() == Material.BARRIER) return;
+        if (Objects.requireNonNull(item).getType() == Material.BARRIER) return;
 
         // Adds the item in player's inventory if the item isn't BARRIER
         p.getInventory().addItem(item);
