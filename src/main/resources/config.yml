@@ -5,6 +5,10 @@ GUIName: '&aVasilityEnchants'
 CurrencySymbol: $ # Appears in %symbol%, doesn't appear if level is maxed
 MaxLevelOutput: '&c&lMAX' # %level% and %price% output if enchantment is maxed
 
+# false = GUI will not be opened when an anvil got right-clicked
+# true = GUI will be opened when an anvil got right-clicked
+AnvilOpenGUI: false
+
 # Placeholders:
 # %price% - Returns price of next enchantment level
 # %level% - Returns current level of the enchant in the specific item
