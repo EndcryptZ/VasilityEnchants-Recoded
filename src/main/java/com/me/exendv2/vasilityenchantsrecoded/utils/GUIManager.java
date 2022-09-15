@@ -22,7 +22,7 @@ public class GUIManager {
     public static Inventory MainGUI;
 
     public Inventory GUI() {
-        MainGUI = Bukkit.createInventory(null, 54, ConfigManager.ColorChanger(config.getString("GUIName")));
+        MainGUI = Bukkit.createInventory(null, 54, configManager.ColorChanger(config.getString("GUIName")));
 
         return MainGUI;
     }
@@ -35,7 +35,7 @@ public class GUIManager {
 
     }
 
-    public void basegui() {
+    private void basegui() {
         for (int i = 0; i < 54; i++) {
 
             MainGUI.setItem(i, createGuiItem(Material.GREEN_STAINED_GLASS_PANE, "§1"));

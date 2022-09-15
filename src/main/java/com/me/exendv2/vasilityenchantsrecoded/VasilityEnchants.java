@@ -9,6 +9,7 @@ import com.me.exendv2.vasilityenchantsrecoded.utils.ConfigManager;
 import com.me.exendv2.vasilityenchantsrecoded.utils.GUIManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -44,7 +45,7 @@ public final class VasilityEnchants extends JavaPlugin {
                 }
                 // Closes Enchant GUI
                 p.closeInventory();
-                p.sendMessage(ConfigManager.ColorChanger(getConfig().getString("PREFIX")) + "GUI has been closed due to plugin deactivation.");
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&' , getConfig().getString("PREFIX")) + "GUI has been closed due to plugin deactivation.");
             }
         }
     }
@@ -61,10 +62,10 @@ public final class VasilityEnchants extends JavaPlugin {
         econ = rsp.getProvider();
     }
 
-    public void configReload(){
-        saveDefaultConfig();
-        saveConfig();
+    public void ConfigReload(){
         reloadConfig();
+        saveConfig();
+        saveDefaultConfig();
     }
 
 }

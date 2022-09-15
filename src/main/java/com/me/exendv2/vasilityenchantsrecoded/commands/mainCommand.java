@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class mainCommand implements CommandExecutor {
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -38,10 +37,8 @@ public class mainCommand implements CommandExecutor {
                     return true;
                 }
             }
+            instance.ConfigReload();
             sender.sendMessage(configManager.getPrefix + "§aConfiguration file has been reloaded!");
-            instance.configReload();
-            Bukkit.getPluginManager().disablePlugin(instance);
-            Bukkit.getPluginManager().enablePlugin(instance);
             return true;
         }
 

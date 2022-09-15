@@ -80,7 +80,11 @@ public class ConfigManager {
         } return config.getInt(path);
     }
 
-    public static String ColorChanger(String message){
+    public boolean isAnvilEnabled(){
+        return config.getBoolean("AnvilOpenGUI");
+    }
+
+    public String ColorChanger(String message){
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
