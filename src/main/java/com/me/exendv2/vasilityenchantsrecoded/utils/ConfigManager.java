@@ -10,9 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConfigManager {
-    FileConfiguration config = VasilityEnchants.getPlugin(VasilityEnchants.class).getConfig();
     ItemManager itemManager = new ItemManager();
 
+    FileConfiguration config(){
+        return VasilityEnchants.instance.getConfig();
+    }
     public int getMaxLevel(ItemStack itemStack, Enchantment enchantment){
         String path = null;
         int i;
@@ -22,7 +24,7 @@ public class ConfigManager {
                 break;
             }
         }
-        long test = config.getConfigurationSection(path).getKeys(false).size();
+        long test = config().getConfigurationSection(path).getKeys(false).size();
         i = (int) test;
         return i;
     }
@@ -30,22 +32,22 @@ public class ConfigManager {
     public List<String> getBookLore(ItemStack item, Enchantment enchantment){
         List<String> lores = null;
         if (item.getEnchantmentLevel(enchantment) >= getMaxLevel(item, enchantment)){
-            lores = config.getStringList("BookItem.Lore")
+            lores = config().getStringList("BookItem.Lore")
                     .stream()
                     .map(line -> ColorChanger(line)
-                            .replaceAll("%level%", ColorChanger(config.getString("MaxLevelOutput")))
-                            .replaceAll("%price%", ColorChanger(config.getString("MaxLevelOutput")))
+                            .replaceAll("%level%", ColorChanger(config().getString("MaxLevelOutput")))
+                            .replaceAll("%price%", ColorChanger(config().getString("MaxLevelOutput")))
                             .replaceAll("%symbol%", ""))
                     .collect(Collectors.toList());
         }
 
         else {
-            lores = config.getStringList("BookItem.Lore")
+            lores = config().getStringList("BookItem.Lore")
                     .stream()
                     .map(line -> ColorChanger(line)
                             .replaceAll("%level%", String.valueOf(item.getEnchantmentLevel(enchantment)))
                             .replaceAll("%price%", String.valueOf(getPrice(item, enchantment)))
-                            .replaceAll("%symbol%", "\\" + config.getString("CurrencySymbol")))
+                            .replaceAll("%symbol%", "\\" + config().getString("CurrencySymbol")))
                     .collect(Collectors.toList());
 
         }
@@ -60,14 +62,14 @@ public class ConfigManager {
                 path = s + "." + enchantment.getKey().getKey().toUpperCase() + "." + "Prices." + level;
                 break;
             }
-        } return config.getLong(path);
+        } return config().getLong(path);
     }
 
-    public String getPrefix = ColorChanger(config.getString("PREFIX"));
+    public String getPrefix = ColorChanger(config().getString("PREFIX"));
 
     public String getBookName(Enchantment enchantment) {
         String path = "BookItem.Name";
-        return ColorChanger(config.getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ").toUpperCase()));
+        return ColorChanger(config().getString(path).replaceAll("(?i)%enchantment%", enchantment.getKey().getKey().replaceAll("_", " ").toUpperCase()));
     }
 
     public int getSlot(ItemStack itemStack, Enchantment enchantment){
@@ -77,11 +79,11 @@ public class ConfigManager {
                 path = s + "." + enchantment.getKey().getKey().toUpperCase() + ".Slot";
                 break;
             }
-        } return config.getInt(path);
+        } return config().getInt(path);
     }
 
     public boolean isAnvilEnabled(){
-        return config.getBoolean("AnvilOpenGUI");
+        return config().getBoolean("AnvilOpenGUI");
     }
 
     public String ColorChanger(String message){

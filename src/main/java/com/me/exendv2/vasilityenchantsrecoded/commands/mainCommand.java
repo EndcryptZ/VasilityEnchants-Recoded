@@ -13,7 +13,6 @@ public class mainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        VasilityEnchants instance = VasilityEnchants.getPlugin(VasilityEnchants.class);
         GUIManager guiManager = new GUIManager();
         ConfigManager configManager = new ConfigManager();
 
@@ -37,7 +36,8 @@ public class mainCommand implements CommandExecutor {
                     return true;
                 }
             }
-            instance.ConfigReload();
+            VasilityEnchants.instance.reloadConfig();
+            Bukkit.getConsoleSender().sendMessage(configManager.getPrefix + "§aConfiguration file has been reloaded!");
             sender.sendMessage(configManager.getPrefix + "§aConfiguration file has been reloaded!");
             return true;
         }

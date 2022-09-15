@@ -17,12 +17,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class VasilityEnchants extends JavaPlugin {
 
+    public static VasilityEnchants instance;
     public static Economy econ = null;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         setupEconomy();
+        instance = this;
         getServer().getPluginCommand("vasilityenchants").setExecutor(new mainCommand());
         getServer().getPluginManager().registerEvents(new mainClickListener(), this);
         getServer().getPluginManager().registerEvents(new closeInventoryListener(), this);
@@ -60,12 +62,6 @@ public final class VasilityEnchants extends JavaPlugin {
             return;
         }
         econ = rsp.getProvider();
-    }
-
-    public void ConfigReload(){
-        reloadConfig();
-        saveConfig();
-        saveDefaultConfig();
     }
 
 }
