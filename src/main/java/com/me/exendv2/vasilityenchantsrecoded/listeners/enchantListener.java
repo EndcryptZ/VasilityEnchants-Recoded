@@ -38,7 +38,7 @@ public class enchantListener implements Listener {
 
         if (!(e.getClickedInventory() == GUIManager.MainGUI)) {return;}
 
-        if (Objects.requireNonNull(e.getClickedInventory()).getItem(13) == null) {return;}
+        if (e.getClickedInventory().getItem(13) != null) {return;}
         ItemStack item = e.getClickedInventory().getItem(13);
         Player p = (Player) e.getWhoClicked();
         double balance = eco.getBalance(p);
