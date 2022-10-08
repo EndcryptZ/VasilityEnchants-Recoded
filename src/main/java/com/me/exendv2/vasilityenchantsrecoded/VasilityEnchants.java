@@ -21,8 +21,24 @@ public final class VasilityEnchants extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        // Checks if there is a vault plugin to support the economy
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cCouldn't find vault plugin. Disabling the Plugin..."));
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
         saveDefaultConfig();
         setupEconomy();
+
+        // Checks if there are any economy provider plugin otherwise the plugin will be disabled and demand for an economy plugin
+        if (econ == null) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cCouldn't find any economy provider plugin. Disabling the Plugin..."));
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
         instance = this;
         getServer().getPluginCommand("vasilityenchants").setExecutor(new mainCommand());
         getServer().getPluginManager().registerEvents(new mainClickListener(), this);
